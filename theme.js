@@ -3,8 +3,8 @@ const colors = {
   primary: '#d61b1f',
   secondary: '#3a3232',
   tertiary: '#ed6004',
-  black: '',
-  white: '',
+  black: '#000',
+  white: '#fff',
   gray: '#d9d2d2',
   gray2: '#f6f5f5',
 };
@@ -13,7 +13,7 @@ const sizes = {
   // global sizes
   base: 12,
   font: 12,
-  border: 12,
+  border: 10,
 
   // font sizes
   h1: 32,
@@ -27,7 +27,7 @@ const sizes = {
 
 const fonts = {
   h1: {
-    // fontFamily: "Montserrat-Bold",
+    fontFamily: 'Montserrat-Bold',
     fontSize: sizes.h1,
   },
   h2: {

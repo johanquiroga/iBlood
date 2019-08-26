@@ -1,19 +1,41 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import { Block, Text } from './components';
+
+export default class App extends React.Component {
+  state = { fontsLoaded: false };
+
+  async componentDidMount() {
+    await this.loadFonts();
+    this.setState({ fontsLoaded: true });
+  }
+
+  loadFonts = async () =>
+    Font.loadAsync({
+      'Montserrat-Regular': require('./assets/fonts/Montserrat-Regular.ttf'),
+      'Montserrat-Bold': require('./assets/fonts/Montserrat-Bold.ttf'),
+      'Montserrat-SemiBold': require('./assets/fonts/Montserrat-SemiBold.ttf'),
+      'Montserrat-Medium': require('./assets/fonts/Montserrat-Medium.ttf'),
+      'Montserrat-Light': require('./assets/fonts/Montserrat-Light.ttf'),
+    });
+
+  render() {
+    const { fontsLoaded } = this.state;
+    if (!fontsLoaded) {
+      return <AppLoading />;
+    }
+    return (
+      <Block center middle color="white" style={styles.container}>
+        <Text bold h1>
+          iBlood
+        </Text>
+      </Block>
+    );
+  }
 }
-
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+  container: {},
 });
