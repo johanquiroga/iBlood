@@ -9,9 +9,14 @@ export default class Block extends Component {
       flex,
       row,
       column,
+      card,
+      shadow,
       center,
       middle,
+      left,
+      right,
       color,
+      space,
       style,
       children,
       ...props
@@ -25,6 +30,11 @@ export default class Block extends Component {
       column && styles.column,
       center && styles.center,
       middle && styles.middle,
+      left && styles.left,
+      right && styles.right,
+      card && styles.card,
+      shadow && styles.shadow,
+      space && { justifyContent: `space-${space}` },
       color && styles[color], // Predefined styles color for background
       color && !styles[color] && { backgroundColor: color }, // Custom background color
       style,
@@ -57,10 +67,16 @@ const styles = StyleSheet.create({
   middle: {
     justifyContent: 'center',
   },
+  left: {
+    justifyContent: 'flex-start',
+  },
+  right: {
+    justifyContent: 'flex-end',
+  },
   shadow: {
     shadowColor: theme.colors.black,
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.0,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
     shadowRadius: 10,
   },
   accent: { backgroundColor: theme.colors.accent },
